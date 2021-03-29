@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -30,5 +31,22 @@ public class Cat {
 
     public boolean hasFriends() {
         return !CollectionUtils.isEmpty(friends);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cat)) return false;
+        Cat cat = (Cat) o;
+        return age == cat.age &&
+                Objects.equals(name, cat.name) &&
+                Objects.equals(nickName, cat.nickName) &&
+                Objects.equals(friends, cat.friends) &&
+                Objects.equals(character, cat.character);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, nickName, friends, character);
     }
 }
