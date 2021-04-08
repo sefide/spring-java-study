@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,9 +33,12 @@ public class HashTest {
 
     private Hashtable<Character, Cat> table = new Hashtable<>();
     private HashMap<Cat, Integer> map = new HashMap<>();
+    private ConcurrentHashMap<Cat, String> concurrentHashMap = new ConcurrentHashMap<>();
 
     @Test
     void hashtable_synchronized() {
+        // method 자체에 synchronized 처리
+        // this에 Lock이 걸림 (성능 저하)
         table.put(KIND, MOMO);
         table.get(KIND);
     }
@@ -53,7 +57,9 @@ public class HashTest {
 
     @Test
     void map_synchronized() {
+        // no synchronized
         map.put(MOMO, 3);
+        // no synchronized
         map.get(KIND);
     }
 
@@ -69,5 +75,26 @@ public class HashTest {
         map.put(null, 0);
 
         assertEquals(0, (int) map.get(null));
+    }
+
+    @Test
+    void concurrentHashMap_s() {
+        // Node에 synchronized 처리
+        // MultiThread에 유리
+        concurrentHashMap.put(MOMO, "MOMO");
+        // no synchronized
+        concurrentHashMap.get(MOMO);
+    }
+
+    @Test
+    void concurrentHashMap_null_value() {
+        assertThatNullPointerException()
+                .isThrownBy(() -> concurrentHashMap.put(MOMO, null));
+    }
+
+    @Test
+    void concurrentHashMap_null_key() {
+        assertThatNullPointerException()
+                .isThrownBy(() -> concurrentHashMap.put(null, "DD"));
     }
 }
