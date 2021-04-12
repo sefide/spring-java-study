@@ -21,8 +21,8 @@ public class TransientTest {
                 .nameCode("cute cute")
                 .build();
 
-        doSerialize(dog);
-        Dog readDog = doDeSerialize();
+        doSerialize(dog); // 직렬화
+        Dog readDog = doDeSerialize(); // 역직렬화
 
         assertNull(readDog.getNameCode());
         assertEquals(dog.getName(), readDog.getName());
@@ -30,7 +30,6 @@ public class TransientTest {
         assertEquals(dog.getId(), readDog.getId());
     }
 
-    @Test
     void doSerialize(Dog dog) {
         try (FileOutputStream fos = new FileOutputStream(FILE_NAME);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
