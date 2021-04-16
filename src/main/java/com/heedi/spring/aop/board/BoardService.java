@@ -1,19 +1,9 @@
 package com.heedi.spring.aop.board;
 
-import com.heedi.spring.aop.SuperPerformance;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
-public class BoardService extends SuperPerformance<Board> {
+public interface BoardService {
 
-    @Autowired
-    private BoardRepository boardRepository;
+    List<Board> getBoards();
 
-    @Override
-    public List<Board> findAll() {
-        return boardRepository.findAll();
-    }
 }
