@@ -9,12 +9,12 @@ public class VolatileMain {
     public static void main(String[] args) {
         hippo = new Hippo("po", "deepGray");
 
-        power_one_thread_read_one_thread_write();
-//        volatile_power_one_thread_read_one_thread_write();
+        power_one_write_thread();
+//        volatile_power_one_write_thread();
 //        volatile_power_two_write_thread();
     }
 
-    private static void power_one_thread_read_one_thread_write() {
+    private static void power_one_write_thread() {
 
         new Thread(() -> {
             for (int i = 0; i < 50; i++) {
@@ -45,7 +45,7 @@ public class VolatileMain {
         }).start();
     }
 
-    private static void volatile_power_one_thread_read_one_thread_write() {
+    private static void volatile_power_one_write_thread() {
 
         new Thread(() -> {
             for (int i = 0; i < 50; i++) {
