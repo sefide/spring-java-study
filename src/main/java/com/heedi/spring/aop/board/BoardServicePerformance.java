@@ -9,13 +9,12 @@ import java.util.List;
 
 @Service
 @Primary
-public class BoardServicePerformance implements BoardService {
+public class BoardServicePerformance {
 
     @Autowired
     @Qualifier("boardServiceImpl")
     private BoardService boardService;
 
-    @Override
     public List<Board> getBoards() {
         long start = before();
         List<Board> boards = boardService.getBoards();

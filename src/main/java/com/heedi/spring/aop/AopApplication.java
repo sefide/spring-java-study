@@ -3,6 +3,7 @@ package com.heedi.spring.aop;
 import com.heedi.spring.aop.board.Board;
 import com.heedi.spring.aop.board.BoardRepository;
 import com.heedi.spring.aop.board.BoardService;
+import com.heedi.spring.aop.common.Performance;
 import com.heedi.spring.aop.user.User;
 import com.heedi.spring.aop.user.UserRepository;
 import com.heedi.spring.aop.user.UserService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
+@EnableAspectJAutoProxy
 public class AopApplication implements CommandLineRunner {
 
     @Autowired
@@ -52,5 +56,10 @@ public class AopApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(AopApplication.class, args);
+    }
+
+    @Bean
+    public Performance performance() {
+        return new Performance();
     }
 }
