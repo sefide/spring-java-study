@@ -1,17 +1,21 @@
 package com.heedi.spring.model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Hippo {
 
     private String name;
     private String color;
     private int power;
     private volatile int volatilePower;
+    private AtomicInteger atomicPower;
 
     public Hippo(String name, String color) {
         this.name = name;
         this.color = color;
         this.power = 0;
         this.volatilePower = 0;
+        this.atomicPower = new AtomicInteger(0);
     }
 
     public void pushThePower(String caller) {
@@ -36,14 +40,28 @@ public class Hippo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
 
+    public void pushTheAtomicPower(String caller) {
+        int after = this.atomicPower.addAndGet(1);
+        System.out.println(caller + " - atomic Up: " + after);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getPower() {
-        return this.power;
+        return power;
     }
 
     public int getVolatilePower() {
         return volatilePower;
+    }
+
+    public int getAtomicPower() {
+        return atomicPower.get();
     }
 }
