@@ -3,11 +3,18 @@ package com.heedi.spring.aop.common;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class Performance {
 
-    @Around("execution(* com.heedi.spring.aop.board.BoardService.getBoards(..))")
+    @Pointcut("execution(* com.heedi.spring.aop.board.BoardService.getBoards(..))")
+    public void getBoards(){}
+
+    @Pointcut("execution(* com.heedi.spring.aop.user.UserService.getUsers(..))")
+    public void getUsers(){}
+
+    @Around("getBoards() || getUsers()")
     public Object calculatePerformanceTime(ProceedingJoinPoint proceedingJoinPoint) {
         Object result = null;
 
