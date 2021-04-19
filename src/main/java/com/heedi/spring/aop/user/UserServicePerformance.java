@@ -9,13 +9,13 @@ import java.util.List;
 
 @Service
 @Primary
-public class UserServicePerformance implements UserService {
+public class UserServicePerformance {
 
     @Autowired
     @Qualifier("userServiceImpl")
     private UserService userService;
 
-    @Override
+//    @Override
     public List<User> getUsers() {
         long start = before();
         List<User> users = userService.getUsers();
