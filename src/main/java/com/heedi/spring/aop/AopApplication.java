@@ -38,6 +38,7 @@ public class AopApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("run 실행");
+
         for (int i = 1; i <= 100; i++) {
             boardRepository.save(new Board(i + "번째 게시글의 제목", i + "번째 게시글의 내용"));
             userRepository.save(new User(i + "@email.com", i + "번째 사용자"));
@@ -58,8 +59,8 @@ public class AopApplication implements CommandLineRunner {
         SpringApplication.run(AopApplication.class, args);
     }
 
-    @Bean
-    public Performance performance() {
-        return new Performance();
-    }
+//    @Bean
+//    public Performance performance() {
+//        return new Performance();
+//    }
 }
