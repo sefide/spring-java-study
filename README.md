@@ -4,7 +4,7 @@ spring with java
 <br>
 
 **Jackson ObjectMapper** <br>
-[convertValue test](src/test/java/com/heedi/spring/model/CatTest.java)
+[convertValue customize](src/test/java/com/heedi/spring/model/CatTest.java)
 
 
 **Equals()** <br>
