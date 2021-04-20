@@ -4,11 +4,12 @@ spring with java
 <br>
 
 **Jackson ObjectMapper** <br>
-[CatTest.java](src/test/java/com/heedi/spring/model/CatTest.java)
+[convertValue test](src/test/java/com/heedi/spring/model/CatTest.java)
 
 
 **Equals()** <br>
-[EqualsTest.java](src/test/java/com/heedi/spring/EqualsTest.java)
+[EqualsTest.java](src/test/java/com/heedi/spring/EqualsTest.java) <br>
+float, String equals() 
 
 
 **Hash (Hashtable, HashMap, ConcurrentHashMap)** <br>
