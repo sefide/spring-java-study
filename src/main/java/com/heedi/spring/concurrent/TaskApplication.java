@@ -1,6 +1,5 @@
 package com.heedi.spring.concurrent;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,10 +13,9 @@ public class TaskApplication {
 
     public static void main(String[] args) {
 //        run_AbortPolicy();
-        run_CallerRunsPolicy();
-//        run_DiscardPolicy();
+//        run_CallerRunsPolicy();
+        run_DiscardPolicy();
 //        run_DiscardOldestPolicy();
-//        SpringApplication.run(TaskApplication.class, args);
     }
 
     private static void run_AbortPolicy() {
