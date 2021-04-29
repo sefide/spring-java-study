@@ -37,3 +37,8 @@ float, String equals()
 [AopApplicationTest.java](src/test/java/com/heedi/spring/aop/AopApplicationTest.java) <br>
 jojoldu님 블로그로 공부하며 클론 (https://jojoldu.tistory.com/69?category=635883)
 
+
+**상속과 컴포지션** <br>
+[상속 테스트](src/test/java/com/heedi/spring/inheritance/BadChildHashSetTest.java) <br>
+[컴포지션 테스트](src/test/java/com/heedi/spring/inheritance/InstrumentedSetTest.java) <br>
+이펙티브 자바 - 아이템 18. 상속보다는 컴포지션을 사용하라
