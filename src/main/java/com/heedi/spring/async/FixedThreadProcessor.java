@@ -7,10 +7,9 @@ import java.util.stream.IntStream;
 public class FixedThreadProcessor {
 
     private static final int THREAD_POOL_SIZE = 100;
-
     private static final Executor executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
-    public void executeFixedThreadPool() {
+    public void execute() {
         IntStream.range(0, 100)
                 .forEach(n -> executor.execute(() -> {
                     String threadName = Thread.currentThread().getName();
