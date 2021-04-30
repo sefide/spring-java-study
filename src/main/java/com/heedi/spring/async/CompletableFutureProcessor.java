@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CompletableFutureProcessor {
@@ -21,8 +22,11 @@ public class CompletableFutureProcessor {
                 ));
 
         CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()]))
-                .thenAccept(consumer -> completableFutures
-                        .forEach(c -> System.out.println(c.join())));
+                .thenApply(Void -> completableFutures.stream()
+                        .map(CompletableFuture::join)
+                        .collect(Collectors.toList()))
+                .join()
+                .forEach(System.out::println);
     }
 
     private String task(String s) {
