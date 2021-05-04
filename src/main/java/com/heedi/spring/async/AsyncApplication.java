@@ -7,6 +7,7 @@ public class AsyncApplication {
 //        fixedThreadProcessor.execute();
 
         CompletableFutureProcessor completableFutureProcessor = new CompletableFutureProcessor();
-        completableFutureProcessor.execute();
+//        completableFutureProcessor.execute();
+        completableFutureProcessor.executeFail();
     }
 }
