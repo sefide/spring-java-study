@@ -35,9 +35,11 @@ public class Cat {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Cat)) return false;
-        Cat cat = (Cat) o;
+        if (this == o) return true; // 자기 자신에 대한 참조인지 확인
+        if (!(o instanceof Cat)) return false; // 입력이 올바른 타입인지 확인
+        Cat cat = (Cat) o; // 입력을 올바른 타입으로 형변환
+
+        // 입력 객체와 자신이 대응되는 핵심 필드들이 일치하는지 확인
         return age == cat.age &&
                 Objects.equals(name, cat.name) &&
                 Objects.equals(nickName, cat.nickName) &&
