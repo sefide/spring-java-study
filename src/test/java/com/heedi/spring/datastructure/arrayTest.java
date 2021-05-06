@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class arrayTest {
 
@@ -35,10 +34,25 @@ public class arrayTest {
     }
 
     @Test
+    void array_add_IndexOutBoundsException() {
+        List<Integer> arrayList = new ArrayList<>();
+
+        Throwable throwable = assertThrows(IndexOutOfBoundsException.class,
+                () -> arrayList.add(100, 1004));
+
+        System.out.println(throwable.getMessage());
+        assertEquals("Index: 100, Size: 0", throwable.getMessage());
+    }
+
+    @Test
     void array_get() {
         List<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
-        arrayList.add(3, 4);
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(4);
+
+        Integer value = arrayList.get(3);
 
         System.out.println(arrayList);
     }
