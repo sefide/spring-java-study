@@ -42,3 +42,7 @@ jojoldu님 블로그로 공부하며 클론 (https://jojoldu.tistory.com/69?cate
 [상속 테스트](src/test/java/com/heedi/spring/inheritance/BadChildHashSetTest.java) <br>
 [컴포지션 테스트](src/test/java/com/heedi/spring/inheritance/InstrumentedSetTest.java) <br>
 이펙티브 자바 - 아이템 18. 상속보다는 컴포지션을 사용하라
+
+**CompletableFuture** <br>
+[AsyncApplication.java](src/main/java/com/heedi/spring/async/AsyncApplication.java)
+
