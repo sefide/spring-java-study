@@ -1,17 +1,29 @@
 package com.heedi.spring.async;
 
+import java.util.concurrent.ExecutionException;
+
 public class AsyncApplication {
-    private static FixedThreadProcessor fixedThreadProcessor;
     private static CompletableFutureProcessor completableFutureProcessor;
 
     public static void main(String[] args) {
-        FixedThreadProcessor();
-        executeCompletableFutureTest();
-        executeCompletableFutureFailTest();
+//        executeFixedThreadTest();
+
+        executeFutureTest();
+//        executeCompletableFutureTest();
+//        executeCompletableFutureFailTest();
     }
 
-    private static void FixedThreadProcessor() {
-        fixedThreadProcessor = new FixedThreadProcessor();
+    private static void executeFutureTest() {
+        FutureProcessor futureProcessor = new FutureProcessor();
+        try {
+            futureProcessor.execute();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void executeFixedThreadTest() {
+        FixedThreadProcessor fixedThreadProcessor = new FixedThreadProcessor();
         fixedThreadProcessor.execute();
     }
 
