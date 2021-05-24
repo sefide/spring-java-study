@@ -1,26 +1,38 @@
 package com.heedi.spring.async;
 
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 public class AsyncApplication {
+    private static FutureProcessor futureProcessor;
     private static CompletableFutureProcessor completableFutureProcessor;
 
     public static void main(String[] args) {
 //        executeFixedThreadTest();
 
         executeFutureTest();
+//        executeFutureTimeoutTest();
+//        executeFutureCancelTest();
 //        executeCompletableFutureTest();
 //        executeCompletableFutureFailTest();
     }
 
     private static void executeFutureTest() {
-        FutureProcessor futureProcessor = new FutureProcessor();
+        futureProcessor = new FutureProcessor();
         try {
             futureProcessor.execute();
-        } catch (ExecutionException | InterruptedException | TimeoutException e) {
-            e.printStackTrace();
+        } catch (ExecutionException | InterruptedException e) {
+            System.out.println(e);
         }
+    }
+
+    private static void executeFutureTimeoutTest() {
+        futureProcessor = new FutureProcessor();
+        futureProcessor.executeTimeout();
+    }
+
+    private static void executeFutureCancelTest() {
+        futureProcessor = new FutureProcessor();
+        futureProcessor.executeCancel();
     }
 
     private static void executeFixedThreadTest() {
