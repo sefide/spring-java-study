@@ -9,11 +9,13 @@ public class AsyncApplication {
     public static void main(String[] args) {
 //        executeFixedThreadTest();
 
-        executeFutureTest();
+//        executeFutureTest();
 //        executeFutureTimeoutTest();
 //        executeFutureCancelTest();
+
 //        executeCompletableFutureTest();
 //        executeCompletableFutureFailTest();
+        executeCompletableFutureSupplyAsyncTest();
     }
 
     private static void executeFutureTest() {
@@ -48,5 +50,10 @@ public class AsyncApplication {
     private static void executeCompletableFutureFailTest() {
         completableFutureProcessor = new CompletableFutureProcessor();
         completableFutureProcessor.executeFail();
+    }
+
+    private static void executeCompletableFutureSupplyAsyncTest() {
+        completableFutureProcessor = new CompletableFutureProcessor();
+        completableFutureProcessor.executeSupplyAsync();
     }
 }

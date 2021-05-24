@@ -1,8 +1,10 @@
 package com.heedi.spring.async;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
@@ -42,7 +44,6 @@ public class CompletableFutureProcessor {
     }
 
     public void executeFail() {
-
         IntStream.range(0, 100)
                 .forEach(i -> CompletableFuture.supplyAsync(() -> failTask(i))
                                 .exceptionally(e -> {
@@ -66,5 +67,26 @@ public class CompletableFutureProcessor {
         }
 
         return i;
+    }
+
+    public void executeSupplyAsync() {
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            System.out.println("start _ " + LocalDateTime.now());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "OK !!";
+        });
+
+        String result;
+        try {
+            // blocking
+            result = completableFuture.get();
+            System.out.println("result : " + result + " " + LocalDateTime.now());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
