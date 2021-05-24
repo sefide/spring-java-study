@@ -1,6 +1,7 @@
 package com.heedi.spring.async;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class AsyncApplication {
     private static CompletableFutureProcessor completableFutureProcessor;
@@ -17,7 +18,7 @@ public class AsyncApplication {
         FutureProcessor futureProcessor = new FutureProcessor();
         try {
             futureProcessor.execute();
-        } catch (ExecutionException | InterruptedException e) {
+        } catch (ExecutionException | InterruptedException | TimeoutException e) {
             e.printStackTrace();
         }
     }
